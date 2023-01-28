@@ -1,0 +1,41 @@
+def s():
+    setor = pyautogui.prompt(text='Setor:'
+                                  '\n [ 1 ] RH'
+                                  '\n [ 2 ] Fiscal'
+                                  '\n [ 3 ] ADM'
+                                  '\n [ 4 ] TI ( Problemas com computadores e sistemas fornecidos pela empresa )'
+                                  '\n [ 5 ] Protheus ( Problemas com/dentro do aplicativo do Protheus )'
+                                  '\n [ 6 ] QlickView ( Problemas no Site do Qlick )',
+                             title='GLPI-V2 Insira o setor').replace(
+        " ", "")
+    if setor == '1':
+        return 1
+    if setor == '2':
+        return 2
+    if setor == '3':
+        return 3
+    if setor == '4':
+        return 4
+    if setor == '5':
+        return 5
+    if setor == '6':
+        return 6
+    else:
+        pyautogui.alert('Digite uma opcao valida')
+        return False
+valorSetor = False
+while not valorSetor:
+    valorSetor = s()
+    if valorSetor == 1:
+        setor = 'RH'
+    elif valorSetor == 2:
+        setor = 'Fiscal'
+    elif valorSetor == 3:
+        setor = 'ADM'
+    elif valorSetor == 4:
+        setor = 'TI'
+    elif valorSetor == 5:
+        setor = 'Protheus'
+    elif valorSetor == 6:
+        setor = 'QlickView'
+print("Setor recebe: {}".format(setor))
