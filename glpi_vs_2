@@ -1,0 +1,162 @@
+import pyautogui
+import re
+
+pyautogui.alert(text='Voce esta abrindo um chamado', title='GLPI-V2 Aviso')
+
+def t():
+    tipo = pyautogui.prompt(text='Tipo:'
+                                 '\n [ 1 ] Incidente (Erro com sistemas da empresa)'
+                                 '\n [ 2 ] Requisicao (Problemas para o suporte)',
+                            title='GLPI-V2 Insira o tipo').replace(" ",
+                                                                   "")
+    if tipo == '1':
+        return 1
+    if tipo == '2':
+        return 2
+    else:
+        pyautogui.alert("Digite uma opção válida.")
+        return False
+
+
+valorTipo = False
+while not valorTipo:
+    valorTipo = t()
+    if valorTipo == 1:
+        tipo = 'Incidente'
+    else:
+        tipo = 'Requisicao'
+print(tipo)
+
+def s():
+    setor = pyautogui.prompt(text='Setor:'
+                                  '\n [ 1 ] RH'
+                                  '\n [ 2 ] Fiscal'
+                                  '\n [ 3 ] ADM'
+                                  '\n [ 4 ] TI ( Problemas com computadores e sistemas fornecidos pela empresa )'
+                                  '\n [ 5 ] Protheus ( Problemas com/dentro do aplicativo do Protheus )'
+                                  '\n [ 6 ] QlickView ( Problemas no Site do Qlick )',
+                             title='GLPI-V2 Insira o setor').replace(
+        " ", "")
+    if setor == '1':
+        return 1
+    if setor == '2':
+        return 2
+    if setor == '3':
+        return 3
+    if setor == '4':
+        return 4
+    if setor == '5':
+        return 5
+    if setor == '6':
+        return 6
+    else:
+        pyautogui.alert('Digite uma opcao valida')
+        return False
+valorSetor = False
+while not valorSetor:
+    valorSetor = s()
+    if valorSetor == 1:
+        setor = 'RH'
+    elif valorSetor == 2:
+        setor = 'Fiscal'
+    elif valorSetor == 3:
+        setor = 'ADM'
+    elif valorSetor == 4:
+        setor = 'TI'
+    elif valorSetor == 5:
+        setor = 'Protheus'
+    elif valorSetor == 6:
+        setor = 'QlickView'
+print(setor)
+
+if setor == 'TI':
+    titulo = pyautogui.prompt(text='Titulo do chamado', title='GLPI-V2 Titulo', )
+print(titulo)
+
+
+def p():
+    problema = pyautogui.prompt(text='Problema: '
+                                     '\n [ 1 ] Conexões Wifi'
+                                     '\n [ 2 ] Acesso VPN'
+                                     '\n [ 3 ] Instalar Software'
+                                     '\n [ 4 ] Impressora'
+                                     '\n [ 5 ] Acesso a sistemas'
+                                     '\n [ 6 ] Lentidão'
+                                     '\n [ 7 ] Problema geral/outro no computador', title='GLPI-V2 Problema')
+    if problema == '1':
+        return 1
+    if problema == '2':
+
+        return 2
+    if problema == '3':
+
+        return 3
+    if problema == '4':
+
+        return 4
+    if problema == '5':
+
+        return 5
+    if problema == '6':
+
+        return 6
+    if problema == '7':
+        
+        return 7
+    else:
+        pyautogui.alert('Digite uma opção valida')
+        return False
+
+
+valorProblema = False
+while not valorProblema:
+    valorProblema = p()
+    if valorProblema == 1:
+        resolveu_01=pyautogui.confirm(text='Algumas possiveis soluções são:'
+                               '\nVerifique o Wifi que voce esta conectado, mantenha no GRUPOSHARK'
+                               '\nReincie o dispositivo, e roteador'
+                               '\nApós reiniciar o dispositivo e conectar no Wifi correto, resolveu ?'
+                               '\n Sim (Finalizar) e Não (Continuar)', title='GLPI-V2 Resolutiva', buttons=['Não', 'Sim'])
+        if resolveu_01=='Não':
+            problema = 'Wifi'
+        else:
+            problema = 'Resolvido'
+            break
+    if valorProblema == 2:
+        resolveu_02 = pyautogui.confirm(text='Algumas possiveis soluções são:'
+                                            '\nVerifique se seu computador da empresa esta ligado e conectado'
+                                            '\nVerifique o Wifi que voce esta conectado, veja se tem internet'
+                                            '\nReincie o dispositivo, e roteador da sua casa'
+                                            '\nApós reiniciar o dispositivo e conectar no Wifi correto, resolveu ?'
+                                            '\nNão (continuar) Sim (Finalizar)', title='GLPI-V2 Resolutiva',
+                                       buttons=['Não', 'Sim'])
+        if resolveu_02 == 'Não':
+            problema = 'Acesso VPN'
+        else:
+            problema = 'Resolvido'
+            break
+    if valorProblema == 3:
+        problema = 'Install Apps'
+        resolveu_03=pyautogui.confirm(text='Detalhe o app que voce precisa que seja instalado', tittle='GLPI-V2 App', buttons=['Seguir', 'Parar'])
+        if resolveu_03=='Seguir':
+            problema = 'Instalar app'
+        else:
+            problema = 'resolvido'
+            break
+    if valorProblema == 4:
+        problema = 'Impressora'
+        resolveu_04 = pyautogui.confirm(text='Para instalarmos a impressora, vamos precisar do seu IP e do IP da impressora.'
+                 '\nPara pegar o IP da impressora, vá até o local da impressora,'
+                 '\nveja se no visor dela ja tem o IP aparecendo, caso nao:'
+                 '\nAbra as configuracoes < localize relatorios < imprima relatorio de rede', title = 'GLPI-V2 Impressora', buttons=['Seguir','Parar'])
+        if resolveu_04 == 'seguir':
+            problema='Impressora'
+        else:
+            break
+    if valorProblema == 5:
+        problema = 'Acesso'
+    if valorProblema == 6:
+        problema = 'Lentidão'
+    if valorProblema == 7:
+        problema = 'Outros'
+print(problema)
