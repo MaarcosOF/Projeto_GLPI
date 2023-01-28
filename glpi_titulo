@@ -1,0 +1,13 @@
+if setor == 'TI':
+    titulo = pyautogui.prompt(text='Titulo do(a) {}'.format(tipo), title='GLPI-V2 Titulo')
+if setor == 'RH':
+    titulo = pyautogui.prompt(text='Titulo do(a) {}'.format(tipo), title='GLPI-V2 Titulo')
+if setor == 'Fiscal':
+    titulo = pyautogui.prompt(text='Titulo do(a) {}'.format(tipo), title='GLPI-V2 Titulo')
+if setor == 'ADM':
+    titulo = pyautogui.prompt(text='Titulo do(a) {}'.format(tipo), title='GLPI-V2 Titulo')
+if setor == 'Protheus':
+    titulo = pyautogui.prompt(text='Titulo do chamado', title='GLPI-V2 Titulo')
+if setor == 'QlickView':
+    titulo = pyautogui.prompt(text='Titulo do(a) {}'.format(tipo), title='GLPI-V2 Titulo')
+print('Titulo recebe: {}'.format(titulo))
