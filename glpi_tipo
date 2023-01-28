@@ -1,0 +1,23 @@
+def t():
+    tipo = pyautogui.prompt(text='Tipo:'
+                                 '\n [ 1 ] Incidente (Erro com sistemas da empresa)'
+                                 '\n [ 2 ] Requisicao (Problemas para o suporte)',
+                            title='GLPI-V2 Insira o tipo').replace(" ",
+                                                                   "")
+    if tipo == '1':
+        return 1
+    if tipo == '2':
+        return 2
+    else:
+        pyautogui.alert("Digite uma opção válida.")
+        return False
+
+
+valorTipo = False
+while not valorTipo:
+    valorTipo = t()
+    if valorTipo == 1:
+        tipo = 'Incidente'
+    else:
+        tipo = 'Requisicao'
+print(tipo)
